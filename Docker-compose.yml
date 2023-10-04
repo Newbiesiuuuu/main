@@ -1,0 +1,25 @@
+version: '3'
+services:
+  proxy:
+    container_name: nginx_proxy
+    image: nginx:latest
+    ports: 
+      - "80:80"
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+  web:
+    container_name: nginx_web_server
+    image: nginx:latest
+    expose:
+      - "8080"
+    volumes:
+      - ./Backend:/source
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+  php:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile.be
+    volumes:
+      - ./Backend:/source
+    env_file:
+      - .env
