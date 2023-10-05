@@ -20,3 +20,8 @@ services:
       dockerfile: ./Dockerfile.be
     env_file:
       - .env
+
+  reactf:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.fe
