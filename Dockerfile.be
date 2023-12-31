@@ -29,8 +29,6 @@ RUN composer install --optimize-autoloader --no-dev
 ## use 8000 port
 EXPOSE 9000
 
-RUN chown www-data:www-data ./bootstrap
-
 ### run php-fpm
 CMD ["php-fpm"]
 
